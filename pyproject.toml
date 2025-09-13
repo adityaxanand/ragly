@@ -1,0 +1,19 @@
+[project]
+name = "ragly"
+version = "0.1.0"
+description = "A RAG AI assistant for codebases."
+requires-python = ">=3.10"
+dependencies = [
+    "gitingest",
+    "sentence-transformers",
+    "chromadb",
+    "fastapi",
+    "uvicorn[standard]",
+    "gitpython",
+    "requests",
+    "pydantic"
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"

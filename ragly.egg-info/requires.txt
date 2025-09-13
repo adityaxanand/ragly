@@ -1,0 +1,8 @@
+gitingest
+sentence-transformers
+chromadb
+fastapi
+uvicorn[standard]
+gitpython
+requests
+pydantic
