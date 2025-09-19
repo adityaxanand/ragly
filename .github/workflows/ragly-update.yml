@@ -1,0 +1,40 @@
+name: RAGly Index Update
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  update-index:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Install dependencies
+      run: |
+        pip install -e .
+        pip install gitingest sentence-transformers chromadb gitpython transformers torch
+        
+    - name: Run index update
+      run: |
+        cd ingest
+        python custom_extractor.py
+        python summarize_embed.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Upload index artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: ragly-index
+        path: ingest/chroma_db/

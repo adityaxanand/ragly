@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: ragly
+Version: 0.1.0
+Summary: A RAG AI assistant for codebases.
+Requires-Python: >=3.10
+Requires-Dist: gitingest
+Requires-Dist: sentence-transformers
+Requires-Dist: chromadb
+Requires-Dist: fastapi
+Requires-Dist: uvicorn[standard]
+Requires-Dist: gitpython
+Requires-Dist: requests
+Requires-Dist: pydantic
